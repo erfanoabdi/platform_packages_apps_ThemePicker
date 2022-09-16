@@ -19,10 +19,10 @@ android {
             'CollapsingToolbarBaseActivity/src',
         ]
     }
-
-    lintOptions {
+    lint {
         abortOnError false
     }
+
 
 }
 
