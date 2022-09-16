@@ -5,6 +5,11 @@
 
     <uses-sdk android:targetSdkVersion="30" android:minSdkVersion="28"/>
 
+    <!-- Custom permission to enforce that only this app can notify the running live wallpaper that
+               the rotating wallpaper image data changed. -->
+    <permission android:name="com.android.wallpaper.NOTIFY_ROTATING_WALLPAPER_CHANGED"
+         android:protectionLevel="signature"/>
+
     <uses-permission android:name="android.permission.CHANGE_OVERLAY_PACKAGES"/>
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"/>
     <uses-permission android:name="android.permission.SET_WALLPAPER_COMPONENT" />
@@ -12,6 +17,16 @@
     <uses-permission android:name="android.permission.MODIFY_DAY_NIGHT_MODE" />
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+    
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.LAUNCH_MULTI_PANE_SETTINGS_DEEP_LINK" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="com.android.wallpaper.NOTIFY_ROTATING_WALLPAPER_CHANGED"/>
 
     <queries>
         <!-- Specific intents Wallpaper picker query for -->
@@ -78,5 +93,9 @@
              </intent-filter>
         </activity-alias>
 
+        <activity android:name="com.android.wallpaper.picker.ViewOnlyPreviewActivity"
+             android:resizeableActivity="false"
+             android:theme="@style/WallpaperTheme.Preview">
+        </activity>
     </application>
 </manifest>
